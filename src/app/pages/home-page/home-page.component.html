@@ -1,0 +1,4 @@
+<p>home-page</p>
+<div *ngIf="(user$ | async) as user">
+  <h1>Benvenuto: {{user.fullName}}</h1>
+</div>

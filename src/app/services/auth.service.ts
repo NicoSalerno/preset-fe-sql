@@ -41,6 +41,10 @@ export class AuthService {
       );
   }
 
+  register(firstName: string, lastName: string, picture: string, username: string, password: string){
+    return this.http.post<any>('/api/register', { firstName, lastName, picture, username, password });
+  }
+
   refresh() {
     const authTokens = this.jwtSrv.getToken();
     if (!authTokens) {

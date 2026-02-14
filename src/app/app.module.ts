@@ -9,12 +9,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './utils/auth.interceptor';
 import { logoutInterceptor } from './utils/logout.interceptor';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HomePageComponent,
+    NavUserComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
