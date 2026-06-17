@@ -7,7 +7,7 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) 
   // Clone the request to add the authentication header.
   if (authTokens) {
     const newReq = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${authTokens.token}`),
+      headers: req.headers.set('Authorization', `Bearer ${authTokens}`),
     });
     return next(newReq);
   } else {

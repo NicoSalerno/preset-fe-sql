@@ -16,63 +16,48 @@ export class AuthService {
   protected _currentUser$ = new ReplaySubject<User | null>(1);
   currentUser$ = this._currentUser$.asObservable();
 
-  isAuthenticated$ = this.currentUser$
-                      .pipe(
-                        map(user => !!user),
-                        distinctUntilChanged()
-                      );
+  isAuthenticated$ = this.currentUser$.pipe(
+    map(user => !!user),
+    distinctUntilChanged()
+  );
 
   constructor() {
     const tokenValid = this.jwtSrv.areTokensValid();
+    console.log('token valido');
     if (!tokenValid) {
       this.logout();
     } else {
-      const user = this.jwtSrv.getPayload<User>();
-      this._currentUser$.next(user);
+      // Chiama il server per ottenere i dati completi e con i nomi corretti
+      this.fetchUser().subscribe();
     }
   }
 
-  login(username: string, password: string) {
-    return this.http.post<any>('/api/login', {username, password})
-      .pipe(
-        tap(res => this.jwtSrv.setToken(res.token, res.refreshToken)),
-        tap(res => this._currentUser$.next(res.user)),
-        map(res => res.user)
-      );
+  login(email: string, password: string) {
+    return this.http.post<any>('/api/utenti/login', { email, password }).pipe(
+      tap(res => this.jwtSrv.setToken(res.token)),
+      tap(res => this._currentUser$.next(res.user)),
+      map(res => res.user)
+    );
   }
 
-  register(firstName: string, lastName: string, picture: string, username: string, password: string){
-    return this.http.post<any>('/api/register', { firstName, lastName, picture, username, password });
-  }
-
-  refresh() {
-    const authTokens = this.jwtSrv.getToken();
-    if (!authTokens) {
-      throw new Error('Missing refresh token');
-    }
-    return this.http.post<{token: string, refreshToken: string}>('/api/refresh', {refreshToken: authTokens.refreshToken})
-      .pipe(
-        tap(res => this.jwtSrv.setToken(res.token, res.refreshToken)),
-        tap(_ => {
-          const user = this.jwtSrv.getPayload<User>();
-          this._currentUser$.next(user);
-        })
-      );
+  register(nome: string, cognome: string, ruolo: string, email: string, password: string) {
+    return this.http.post<any>('/api/utenti/register', { nome, cognome, ruolo, email, password });
   }
 
   fetchUser() {
-    return this.http.get<User>('/api/users/me')
-      .pipe(
-        catchError(_ => {
-          return of(null);
-        }),
-        tap(user => this._currentUser$.next(user))
-      );
+    console.log('me request');
+    return this.http.get<User>('/api/utenti/me').pipe(
+      catchError(_ => {
+        this.logout();
+        return of(null);
+      }),
+      tap(user => this._currentUser$.next(user))
+    );
   }
 
   logout() {
     this.jwtSrv.removeToken();
     this._currentUser$.next(null);
+    this.router.navigate(['/login']);
   }
-
 }
