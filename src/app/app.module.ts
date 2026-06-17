@@ -12,6 +12,8 @@ import { logoutInterceptor } from './utils/logout.interceptor';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { DefaultCardComponent } from './components/default-card/default-card.component';
+import { ModalDefaultComponent } from './components/modals/modal-default/modal-default.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     LoginComponent,
     HomePageComponent,
     NavUserComponent,
-    NavBarComponent
+    NavBarComponent,
+    DefaultCardComponent,
+    ModalDefaultComponent
   ],
   imports: [
     BrowserModule,

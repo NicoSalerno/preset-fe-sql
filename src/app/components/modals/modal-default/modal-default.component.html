@@ -1,0 +1,38 @@
+<div class="p-3">
+  <div class="modal-header">
+    <h2 class="modal-title">Crea nuova/o</h2>
+    <button type="button" class="btn-close" (click)="dismissModal()"></button>
+  </div>
+
+  <form [formGroup]="defaultForm">
+    <div class="mb-4">
+      <label class="form-label">*Default:</label>
+      <input type="date" class="form-control" formControlName="dataSpesa" />
+      <div *ngIf="defaultForm.get('default')?.invalid && defaultForm.get('default')?.touched" class="text-danger small">
+        obbligatoria.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">*Default:</label>
+      <select class="form-select" formControlName="default">
+        <option value="">Seleziona categoria</option>
+        <option *ngFor="let x of default" [value]="default.id">
+          {{ x }}
+        </option>
+      </select>
+      <div *ngIf="defaultForm.get('default')?.invalid && defaultForm.get('default')?.touched" class="text-danger small">
+        obbligatoria.
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        (click)="closeModal()"
+        [disabled]="!defaultForm.valid"
+      >Crea</button>
+    </div>
+  </form>
+</div>
