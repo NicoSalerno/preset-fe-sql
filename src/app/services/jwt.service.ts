@@ -17,13 +17,11 @@ export class JwtService {
 
   areTokensValid(): boolean {
     const token = this.getToken();
-    console.log(token)
     if (!token) {
       return false;
     }
     try {
       const decoded: any = jwtDecode(token);
-      console.log(decoded.exp)
       if (!decoded.exp) {
         return true;
       }

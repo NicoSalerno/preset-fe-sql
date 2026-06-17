@@ -18,6 +18,10 @@ export class NavBarComponent {
     this.router.navigate(['homepage']);
   }
 
+  routeCharts(){
+    this.router.navigate(['homepage/charts']);
+  }
+
   logout() {
     this.authSrv.logout();
     this.router.navigate(['/login'])
