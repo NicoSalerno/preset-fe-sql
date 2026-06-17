@@ -14,6 +14,9 @@ import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DefaultCardComponent } from './components/default-card/default-card.component';
 import { ModalDefaultComponent } from './components/modals/modal-default/modal-default.component';
+import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,17 @@ import { ModalDefaultComponent } from './components/modals/modal-default/modal-d
     NavUserComponent,
     NavBarComponent,
     DefaultCardComponent,
-    ModalDefaultComponent
+    ModalDefaultComponent,
+    ChartsPageComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NgxChartsModule
   ],
   providers: [
     provideHttpClient(

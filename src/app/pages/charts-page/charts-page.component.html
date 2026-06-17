@@ -1,0 +1,23 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg p-4" style="width: 80%; max-width: 900px;">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Andamento mensile</h3>
+      
+      <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="chartData"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="true"
+        [legendTitle]="'Legenda'"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Mesi'"
+        [yAxisLabel]="'Valori'"
+        [animations]="true"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './utils/auth.guard';
+import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
 
 const routes: Routes = [
   {
@@ -17,9 +18,12 @@ const routes: Routes = [
   {
     path:'homepage',
     component:HomePageComponent,
-    canActivate:[authGuard],
+
     children:[
-      
+      {
+        path:'charts',
+        component:ChartsPageComponent
+      }
     ]
   },
   {
