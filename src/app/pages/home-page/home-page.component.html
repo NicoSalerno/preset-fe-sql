@@ -2,7 +2,7 @@
 <div class="m-5">
   <p>home-page</p>
   <div *ngIf="(user$ | async) as user">
-    <h1>Benvenuto: {{user.firstName}}</h1>
+    <h1>Benvenuto: {{user.nome}}</h1>
   </div>
   <router-outlet></router-outlet>
 </div>  

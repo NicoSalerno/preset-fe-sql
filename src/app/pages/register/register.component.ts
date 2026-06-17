@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit, OnDestroy{
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     picture: ['', Validators.required],
-    username: ['', Validators.required],
+    username: ['', {validators: [Validators.required, Validators.email]}],
     password: ['', Validators.required]
   })
 
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit, OnDestroy{
     this.authSrv.register(firstName!, lastName!, picture!, username!, password!)
     .pipe(
       catchError(error => {
-        this.registerError = error.error.message;
+        this.registerError = error.error.error;
         return throwError(() => error)
       })
     )

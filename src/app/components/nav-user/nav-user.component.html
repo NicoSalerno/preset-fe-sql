@@ -1,8 +1,8 @@
-<li>
-  <a>
-    {{user.firstName}}
+<li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+  <a class="nav-link" ngbDropdownToggle>
+    {{user.nome}}
   </a>
-  <div>
+  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end">
     <button ngbDropdownItem (click)="onLogoutClick()">Logout</button>
   </div>
 </li>
