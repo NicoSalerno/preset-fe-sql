@@ -4,9 +4,10 @@
   
   <div class="card-header bg-white d-flex justify-content-between align-items-center py-3 px-4">
     <div>
-      <h6 class="mb-0 fw-bold">Richiesta #{{ default.id }}</h6>
+      <h6 class="mb-0 fw-bold">ID #{{ default.EntityID }}</h6>
+      <h6 class="mb-0 fw-bold">Nome Entity: {{ default.Nome }}</h6>
       <small class="text-muted">
-        <i class="bi bi-person-circle me-1"></i>{{ default.Nome }} {{ default.Cognome }}
+        <i class="bi bi-person-circle me-1"></i>{{ user.nome }}
       </small>
     </div>
   </div>
@@ -15,8 +16,8 @@
   <div class="card-body px-4 py-3">
     <div class="row mb-3">
       <div class="col-6">
-        <small class="text-muted text-uppercase fw-semibold">Spesa del</small>
-        <p class="mb-0"><i class="bi bi-calendar-check me-1"></i>{{ default.DataSpesa | date:'dd/MM/yyyy' }}</p>
+        <small class="text-muted text-uppercase fw-semibold">Interito il</small>
+        <p class="mb-0"><i class="bi bi-calendar-check me-1"></i>{{ default.DataCreazione | date:'dd/MM/yyyy' }}</p>
       </div>
     </div>
 
@@ -24,5 +25,20 @@
       <small class="text-muted text-uppercase fw-semibold">Descrizione</small>
       <p class="card-text text-muted mb-0">{{ default.Descrizione }}</p>
     </div>
+
+    <div class="mb-3">
+      <small class="text-muted text-uppercase fw-semibold">CategoriaID</small>
+      <p class="card-text text-muted mb-0">{{ default.CategoriaID }}</p>
+    </div>
+    <button
+            class="btn btn-outline-danger btn-sm d-flex align-items-center"
+            (click)="delete.emit(default.EntityID); $event.stopPropagation()">
+    Elimina
+    </button>
+    <button
+            class="btn btn-outline-secondary btn-sm d-flex align-items-center"
+            (click)="edit.emit(default.EntityID); $event.stopPropagation()">
+    Modifica
+    </button>
   </div>
 </div>

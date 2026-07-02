@@ -14,13 +14,18 @@ export class NavBarComponent {
 
   user$ = this.authSrv.currentUser$;
 
-  routeEvents(){
+  routeHome(){
     this.router.navigate(['homepage']);
   }
 
   routeCharts(){
     this.router.navigate(['homepage/charts']);
   }
+
+  routeExample(){
+    this.router.navigate(['/example']);
+  }
+
 
   logout() {
     this.authSrv.logout();

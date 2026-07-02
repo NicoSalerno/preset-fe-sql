@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './utils/auth.guard';
 import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
+import { ExampleComponent } from './pages/example/example.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
         component:ChartsPageComponent
       }
     ]
+  },
+  {
+    path:'example',
+    component:ExampleComponent
   },
   {
     path:'',

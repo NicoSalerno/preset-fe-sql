@@ -17,6 +17,8 @@ import { ModalDefaultComponent } from './components/modals/modal-default/modal-d
 import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExampleComponent } from './pages/example/example.component';
+import { DefaultTableComponent } from './components/default-table/default-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavBarComponent,
     DefaultCardComponent,
     ModalDefaultComponent,
-    ChartsPageComponent
+    ChartsPageComponent,
+    ExampleComponent,
+    DefaultTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 <app-nav-bar></app-nav-bar>
 <div class="m-5">
-  <p>home-page</p>
   <div *ngIf="(user$ | async) as user">
     <h1>Benvenuto: {{user.nome}}</h1>
   </div>

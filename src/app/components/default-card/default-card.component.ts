@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from '../../entities/user.entity';
+import { Entity } from '../../entities/entity.entity';
 
 @Component({
   selector: 'app-default-card',
@@ -9,13 +11,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DefaultCardComponent {
 
   @Input()
-  default: any;
+  default!: Entity;
   @Input()
-  user: any;
+  user!: User;
   @Output() 
   detailClick = new EventEmitter<number>();
 
+  @Output() 
+  delete = new EventEmitter<number>();
+
+  @Output()
+  edit = new EventEmitter<number>();
+  
   openDetail() {
-    this.detailClick.emit(this.default.id);
+    this.detailClick.emit(this.default.EntityID);
   }
 }
